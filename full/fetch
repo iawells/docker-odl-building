@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for PROJECT in aaa affinity bgpcep controller defense4all dlux docs groupbasedpolicy integration l2switch \
+lispflowmapping odlparent opendove openflowjava openflowplugin opflex ovsdb packetcable releng/autorelease \
+releng/builder reservation sdninterfaceapp sfc snbi snmp snmp4sdn tcpmd5 toolkit ttp vtn yangtools; \
+do git clone https://git.opendaylight.org/gerrit/${PROJECT}.git ${PROJECT}; \
+done

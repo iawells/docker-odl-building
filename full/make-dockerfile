@@ -1,0 +1,21 @@
+#!/bin/sh
+
+. "`dirname $0`"/../shellfuncs
+
+
+from $TAGPFX/odlbuildenv
+maintainer
+
+workdir /build
+
+projects=aaa affinity bgpcep controller defense4all dlux docs groupbasedpolicy integration l2switch \
+lispflowmapping odlparent opendove openflowjava openflowplugin opflex ovsdb packetcable releng/autorelease \
+releng/builder reservation sdninterfaceapp sfc snbi snmp snmp4sdn tcpmd5 toolkit ttp vtn yangtools"
+
+for p in $projects; do
+    run git clone https://git.opendaylight.org/gerrit/${PROJECT}.git ${PROJECT};
+done
+
+for p in $projects; do
+    run ./do-mvn $p clean install
+done

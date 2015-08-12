@@ -1,0 +1,44 @@
+
+from() {
+    echo "FROM $@"
+}
+copy() {
+    echo "COPY $@"
+}
+add() {
+    echo "ADD $@"
+}
+run() {
+    echo "RUN $@"
+}
+workdir() {
+    echo "WORKDIR $@"
+}
+
+
+fix_sources_list() {
+    if [ -f "$SOURCES_LIST" ] ; then
+	copy "$SOURCES_LIST" /etc/apt/sources.list
+    fi
+}
+
+maintainer() {
+    if [ ! -z "$MAINTAINER" ] ; then
+	echo "MAINTAINER $MAINTAINER"
+    fi
+}
+
+######################################################################
+
+apt() {
+    fix_sources_list
+    echo "RUN apt-get -y update"
+    echo "RUN apt-get -y install $@"
+}
+
+######################################################################
+
+fetch_build() {
+    run git clone https://git.opendaylight.org/gerrit/"$1".git
+    run ./do-mvn "$@"
+}

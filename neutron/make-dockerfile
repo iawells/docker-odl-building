@@ -1,0 +1,11 @@
+#!/bin/sh
+
+. "`dirname $0`"/../shellfuncs
+
+
+from $TAGPFX/odlbuildenv
+maintainer
+
+workdir /build
+
+fetch_build neutron clean install

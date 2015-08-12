@@ -1,0 +1,19 @@
+#!/bin/sh
+
+. "`dirname $0`"/../shellfuncs
+
+
+from ubuntu
+maintainer
+
+apt pkg-config gcc make ant g++ git libboost-dev libcurl4-openssl-dev \
+    libjson0-dev libssl-dev openjdk-7-jdk unixodbc-dev xmlstarlet
+
+run mkdir /root/.m2
+copy settings.xml /root/.m2/settings.xml
+run mkdir /build
+workdir /build
+
+add apache-maven-3.3.3-bin.tar.gz /
+
+copy do-mvn /build/do-mvn
