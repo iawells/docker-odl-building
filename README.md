@@ -11,7 +11,7 @@ fetched, built environments for a range of projects (from which you
 can then start the container, edit away and then rebuild to your
 heart's content).  The nature of containers lets you make a clean
 build from scratch without installing a ton of packages on your
-main Linux system.`
+main Linux system.
 
 Notes
 -----
